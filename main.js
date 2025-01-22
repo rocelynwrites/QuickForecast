@@ -197,4 +197,117 @@ function get(vari, data01) {
    else if (aqi[6] === 6) {
     aqi_text = "Hazardous";
    }
+    condition_data_box.innerHTML = `
+   <div id="test" class="condition_data_box">
+      <div class="condition_data">
+       <span id="heading">Uv Index</span>
+       <br>
+       <span id="value">${data.current.uv}</span>
+      </div>
+      <div class="condition_data">
+       <span id="heading">Humidity</span>
+       <br>
+       <span id="value">${data.current.humidity}%</span>
+      </div>
+      
+      <div class="condition_data">
+       <span id="heading">Pressure</span>
+       <br>
+       <span id="value">${data.current.pressure_mb} mbar</span>
+      </div>
+     
+      <div class="condition_data">
+       <span id="heading">Wind Speed</span>
+       <br>
+       <span id="value">${data.current.wind_kph} <span class="mini">Km/h</span>
+       <br><span  class="mini"style="font-size:1.2rem;">wind direction : </span><span class="mini " style="font-size:1.3rem; color:#000;">${data.current.wind_dir}</span></span>
+      </div>
+      
+      <div class="condition_data">
+       <span id="heading">Precipitation</span>
+       <br>
+       <span id="value">${data.current.precip_mm} <span class="mini">mm</span></span>
+      </div>
+      
+      
+      <div class="condition_data">
+       <span id="heading">Air Quality</span>
+       <br>
+       <span id="value"> Aqi Index : ${aqi[6]} <br><span style="font-size:1.2rem;" class="mini">${aqi_text}</span></span>
+      </div>
    
+      
+      <div class="condition_data">
+       <span id="heading">Sunrise</span>
+       <br>
+       <span id="value">${astro.sunrise} </span>
+      </div>
+      
+      
+      <div class="condition_data">
+       <span id="heading">Sunset</span>
+       <br>
+       <span id="value">${astro.sunset}</span>
+      </div>
+     <div class="condition_data">
+       <span id="heading">Moonrise</span>
+       <br>
+       <span id="value">${astro.moonrise}</span>
+       <br> <span  class="mini"style="font-size:1.2rem;">Moon Phase : </span><span class="mini " style="font-size:1.3rem; color:#000;">${astro.moon_phase}</span>
+      </div>
+      
+        <div class="condition_data">
+       <span id="heading">Moonset</span>
+       <br>
+       <span id="value">${astro.moonset}</span>
+       <br> <span  class="mini"style="font-size:1.2rem;">Moon illumination : </span><span class="mini " style="font-size:1.3rem; color:#000;">${astro.moon_illumination}%</span>
+      </div>
+   
+   `;
+
+   //today's condition section ends here
+
+   //week section starts here
+
+   while (week.firstChild) {
+    week.removeChild(week.firstChild);
+   }
+
+   let week_day_data = { ...data.forecast.forecastday };
+   //console.log(week_day_data)
+   for (let i = 0, j = 0; i <= 6, j <= 7; i++, j++) {
+    let week_data = { ...week_day_data[i].day };
+    let data_box_week = document.createElement('div');
+    data_box_week.innerHTML = `
+    <div class="week_for">
+       <span class="mini">${remainingDays[j]}</span>
+       <img src= ${week_day_data[i].day.condition.icon} width="50px" height="50px">
+       <span class="mini bold">${week_day_data[i].day.condition.text}</span>
+       <span class="mini bold">${week_data.maxtemp_c}°/<span class="mini">${week_data.mintemp_c}°</span></span>
+       
+      </div>
+    `;
+    week.appendChild(data_box_week)
+
+   }
+
+  }).catch((e) => {
+   //console.warn(`We got an error while getting Data, which is ${e}`);
+
+  })
+ }
+
+}
+get();
+window.onload = function() {
+ menu.classList.add('hide')
+ middle.classList.add('hide')
+ week_temp.classList.add('hide')
+}
+
+start_btn.addEventListener('click', () => {
+ start.classList.add('hide')
+ menu.classList.remove('hide')
+ middle.classList.remove('hide')
+ week_temp.classList.remove('hide')
+})
