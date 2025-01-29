@@ -22,7 +22,7 @@
    }
    
    :root {
-    --grayish-white: #efeaea;
+    --back-grey: #efeaea;
     --black: #000000;
     --white: #fff;
     --data-box: #EEBBC3;
@@ -159,13 +159,13 @@
     justify-content: center;
     position: absolute;
     opacity: .6;
+    background-color: var(--back-dark-grey);   
     border-radius: 1.2rem;
     top: 18%;
     left: 36%;
    
     z-index: 5;
-   
-   
+     
    }
    
    .loader::after {
