@@ -28,31 +28,18 @@ todaycon.classList.add('blur')
 
 
 mode.addEventListener('click',()=>{
-alert("please wait for next update...")
- 
-})
- 
+alert("please wait for next update...");
 
-
+});
+ 
 home.onclick = function() {
- /*document.documentElement.style.cssText= `
- --back-grey:#212D3D;
- --black:#fff;
- --white:#000;
- 
- `;*/
- alert("please wait for next update...")
+ alert("please wait for next update...");
 
-}
+};
+
 setting.onclick = function() {
- /*document.documentElement.style.cssText= `
- --back-grey:#212D3D;
- --black:#fff;
- --white:#000;
- 
- `;*/
- alert("please wait for next update...")
-}
+ alert("please wait for next update...");
+};
 
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const todayIndex = new Date().getDay();
@@ -87,23 +74,16 @@ navigator.geolocation.getCurrentPosition(success, error);
 const week_box = document.querySelector(".t")
 
 //variable declaration ends
-
-
 function see_more() {
 
  for (var i = 0; i <= 5; i++) {
-
-
  }
 
  if (bt.innerText == 'see more') {
   let box = document.querySelector('.today')
 
   let hour = document.createElement('div');
-
-
-
-
+  
   bo.style.height = "100%";
   bo.style.backgroundColor = "var(--white)";
   bo.style.overflow = 'scroll';
